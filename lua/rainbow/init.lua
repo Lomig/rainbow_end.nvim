@@ -1,8 +1,11 @@
+local _G = getfenv(0)
+local api = _G.vim.api
+
 local Rainbow = {}
 local Local = {}
 
--- local BlockFinder = require('rainbow.block_finder')
--- local BlockHighlighter = require('rainbow.block_highlighter')
+local BlockFinder = require('rainbow.block_finder')
+local BlockHighlighter = require('rainbow.block_highlighter')
 
 Local.Running = false
 Local.Colors = {
@@ -21,19 +24,15 @@ function Rainbow:Toggle()
 	end
 end
 
-function Rainbow:Off()
-	vim.api.nvim_command('call clearmatches()')
+function Rainbow.Off()
+	api.nvim_command('call clearmatches()')
 	Local.Running = false
 	print 'Off!'
 end
 
-function Rainbow:On()
+function Rainbow.On()
 	Local.Running = true
-	print 'On'
+	print 'On!'
 end
 
-return {
-	toggle = Rainbow.Toggle,
-	on = Rainbow.On,
-	off = Rainbow.Off,
-}
+return Rainbow
