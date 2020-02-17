@@ -17,3 +17,5 @@ endfunction
 function! RainbowOff()
     lua Rainbow:Off()
 endfunction
+
+autocmd InsertEnter * :call RainbowOff()
